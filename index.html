@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.Mack Hair Design - Professional Hair Care Products</title>
+    <title>A.Mack Hair Design | Hair Stylist - Products & Booking</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         'brand': {
-                            50: '#fdf8f6',
-                            100: '#f2e8e5',
-                            200: '#eaddd7',
-                            300: '#e0cec7',
-                            400: '#d2bab0',
-                            500: '#bfa094',
-                            600: '#a18072',
-                            700: '#977669',
-                            800: '#846358',
-                            900: '#43302b',
+                            50: '#faf9f7',
+                            100: '#f5f3f0',
+                            200: '#e8e4de',
+                            300: '#d4cdc3',
+                            400: '#b8ad9e',
+                            500: '#9c8e7c',
+                            600: '#847562',
+                            700: '#6b5d4d',
+                            800: '#574c40',
+                            900: '#3d352c',
                         },
+                        'accent': '#b8860b',
                         'k18': '#2D2D2D',
                         'olaplex': '#C9A86C',
                         'stmnt': '#1a1a1a'
                     },
                     fontFamily: {
-                        'display': ['Playfair Display', 'serif'],
-                        'body': ['Inter', 'sans-serif'],
+                        'display': ['Cormorant Garamond', 'serif'],
+                        'body': ['Montserrat', 'sans-serif'],
                     }
                 }
             }
@@ -67,6 +68,14 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .book-btn {
+            background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+            transition: all 0.3s ease;
+        }
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+        }
     </style>
 </head>
 <body class="bg-brand-50 font-body text-gray-800">
@@ -76,26 +85,32 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="#" class="font-display text-2xl font-semibold text-brand-900">
+                    <a href="#" class="font-display text-2xl sm:text-3xl font-semibold text-brand-900 tracking-wide">
                         A.Mack Hair Design
                     </a>
                 </div>
                 
                 <!-- Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <button onclick="filterProducts('all')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition" data-filter="all">All Products</button>
-                    <button onclick="filterProducts('k18')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition" data-filter="k18">K18</button>
-                    <button onclick="filterProducts('olaplex')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition" data-filter="olaplex">Olaplex</button>
-                    <button onclick="filterProducts('stmnt')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition" data-filter="stmnt">STMNT</button>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <button onclick="filterProducts('all')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition text-sm" data-filter="all">Products</button>
+                    <button onclick="filterProducts('k18')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition text-sm" data-filter="k18">K18</button>
+                    <button onclick="filterProducts('olaplex')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition text-sm" data-filter="olaplex">Olaplex</button>
+                    <button onclick="filterProducts('stmnt')" class="nav-link text-gray-600 hover:text-brand-800 font-medium transition text-sm" data-filter="stmnt">STMNT</button>
+                    <a href="https://alexmackison.glossgenius.com/services" target="_blank" class="book-btn text-white px-5 py-2 rounded-full text-sm font-medium">
+                        Book Now
+                    </a>
                 </nav>
                 
-                <!-- Cart -->
-                <div class="flex items-center">
+                <!-- Cart & Mobile Book -->
+                <div class="flex items-center gap-3">
+                    <a href="https://alexmackison.glossgenius.com/services" target="_blank" class="md:hidden book-btn text-white px-4 py-2 rounded-full text-xs font-medium">
+                        Book
+                    </a>
                     <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-brand-800 transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
-                        <span id="cart-count" class="cart-count absolute -top-1 -right-1 bg-brand-700 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                        <span id="cart-count" class="cart-count absolute -top-1 -right-1 bg-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
                     </button>
                 </div>
             </div>
@@ -104,48 +119,92 @@
         <!-- Mobile Navigation -->
         <div class="md:hidden border-t border-gray-100">
             <div class="flex justify-around py-2">
-                <button onclick="filterProducts('all')" class="nav-link text-sm text-gray-600 hover:text-brand-800 font-medium px-3 py-1" data-filter="all">All</button>
-                <button onclick="filterProducts('k18')" class="nav-link text-sm text-gray-600 hover:text-brand-800 font-medium px-3 py-1" data-filter="k18">K18</button>
-                <button onclick="filterProducts('olaplex')" class="nav-link text-sm text-gray-600 hover:text-brand-800 font-medium px-3 py-1" data-filter="olaplex">Olaplex</button>
-                <button onclick="filterProducts('stmnt')" class="nav-link text-sm text-gray-600 hover:text-brand-800 font-medium px-3 py-1" data-filter="stmnt">STMNT</button>
+                <button onclick="filterProducts('all')" class="nav-link text-xs text-gray-600 hover:text-brand-800 font-medium px-2 py-1" data-filter="all">All</button>
+                <button onclick="filterProducts('k18')" class="nav-link text-xs text-gray-600 hover:text-brand-800 font-medium px-2 py-1" data-filter="k18">K18</button>
+                <button onclick="filterProducts('olaplex')" class="nav-link text-xs text-gray-600 hover:text-brand-800 font-medium px-2 py-1" data-filter="olaplex">Olaplex</button>
+                <button onclick="filterProducts('stmnt')" class="nav-link text-xs text-gray-600 hover:text-brand-800 font-medium px-2 py-1" data-filter="stmnt">STMNT</button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-brand-200 to-brand-100 py-16 sm:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-brand-900 mb-4">
-                Professional Hair Care
-            </h1>
-            <p class="text-lg sm:text-xl text-brand-700 max-w-2xl mx-auto mb-8">
-                Premium K18, Olaplex, and STMNT products curated by your stylist. Salon-quality results at home.
-            </p>
+    <section class="bg-gradient-to-br from-brand-100 via-brand-50 to-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="text-accent font-medium tracking-widest text-sm mb-3 uppercase">Hair Artist</p>
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-brand-900 mb-6 leading-tight">
+                    Elevate Your Hair Care
+                </h1>
+                <p class="text-lg text-brand-600 mb-8 leading-relaxed">
+                    Shop professional-grade products I personally use and recommend. 
+                    K18, Olaplex, and STMNT — curated for salon-quality results at home.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://alexmackison.glossgenius.com/services" target="_blank" 
+                       class="book-btn text-white px-8 py-3 rounded-full font-medium text-lg inline-flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Book an Appointment
+                    </a>
+                    <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" 
+                            class="bg-white text-brand-800 border-2 border-brand-300 px-8 py-3 rounded-full font-medium text-lg hover:bg-brand-50 transition">
+                        Shop Products
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Pills -->
+    <section class="bg-white py-8 border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="filterProducts('k18')" class="bg-k18 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition">
-                    Shop K18
+                <button onclick="filterProducts('k18')" class="flex items-center gap-2 bg-k18 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition text-sm">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    K18 Biomimetic
                 </button>
-                <button onclick="filterProducts('olaplex')" class="bg-olaplex text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition">
-                    Shop Olaplex
+                <button onclick="filterProducts('olaplex')" class="flex items-center gap-2 bg-olaplex text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition text-sm">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    Olaplex Bond Care
                 </button>
-                <button onclick="filterProducts('stmnt')" class="bg-stmnt text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition">
-                    Shop STMNT
+                <button onclick="filterProducts('stmnt')" class="flex items-center gap-2 bg-stmnt text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition text-sm">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    STMNT Grooming
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex justify-between items-center mb-8">
             <h2 id="section-title" class="font-display text-2xl sm:text-3xl font-semibold text-brand-900">All Products</h2>
-            <p id="product-count" class="text-gray-500"></p>
+            <p id="product-count" class="text-gray-500 text-sm"></p>
         </div>
         
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Products will be injected here -->
         </div>
     </main>
+
+    <!-- About Section -->
+    <section class="bg-brand-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-6">Ready for Your Best Hair?</h2>
+            <p class="text-brand-300 text-lg mb-8 leading-relaxed">
+                Whether you're looking for a fresh cut, dimensional color, or expert styling advice — 
+                I'm here to help you look and feel your best.
+            </p>
+            <a href="https://alexmackison.glossgenius.com/services" target="_blank" 
+               class="inline-flex items-center gap-2 bg-white text-brand-900 px-8 py-3 rounded-full font-medium text-lg hover:bg-brand-100 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                View Services & Book
+            </a>
+        </div>
+    </section>
 
     <!-- Cart Sidebar -->
     <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" onclick="toggleCart()"></div>
@@ -172,34 +231,46 @@
                 <button onclick="checkout()" class="w-full bg-brand-800 text-white py-3 rounded-full font-medium hover:bg-brand-900 transition">
                     Checkout
                 </button>
-                <p class="text-xs text-gray-500 text-center mt-2">Shipping calculated at checkout</p>
+                <p class="text-xs text-gray-500 text-center mt-2">Pick up at your next appointment</p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-brand-900 text-white py-12">
+    <footer class="bg-brand-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
-                    <h4 class="font-display text-xl font-semibold mb-4">A.Mack Hair Design</h4>
-                    <p class="text-brand-300">Professional hair care products hand-picked by your stylist.</p>
+                    <h4 class="font-display text-2xl font-semibold mb-4">A.Mack Hair Design</h4>
+                    <p class="text-brand-300 mb-4">Hair Artist specializing in precision cuts, dimensional color, and personalized styling.</p>
+                    <a href="https://alexmackison.glossgenius.com/services" target="_blank" 
+                       class="inline-block book-btn text-white px-6 py-2 rounded-full text-sm font-medium">
+                        Book Now
+                    </a>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-brand-300">
-                        <li><a href="#" class="hover:text-white transition">All Products</a></li>
-                        <li><a href="#" class="hover:text-white transition">K18 Collection</a></li>
-                        <li><a href="#" class="hover:text-white transition">Olaplex Collection</a></li>
-                        <li><a href="#" class="hover:text-white transition">STMNT Collection</a></li>
+                    <h4 class="font-semibold mb-4">Hours</h4>
+                    <ul class="space-y-1 text-brand-300 text-sm">
+                        <li class="flex justify-between"><span>Monday</span><span>Closed</span></li>
+                        <li class="flex justify-between"><span>Tuesday</span><span>10 AM - 8 PM</span></li>
+                        <li class="flex justify-between"><span>Wednesday</span><span>9 AM - 1 PM</span></li>
+                        <li class="flex justify-between"><span>Thursday</span><span>10 AM - 8 PM</span></li>
+                        <li class="flex justify-between"><span>Friday</span><span>9 AM - 2 PM</span></li>
+                        <li class="flex justify-between"><span>Saturday</span><span>10 AM - 6 PM</span></li>
+                        <li class="flex justify-between"><span>Sunday</span><span>Closed</span></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
-                    <p class="text-brand-300">Questions about products?<br>Ask at your next appointment!</p>
+                    <h4 class="font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-brand-300 text-sm">
+                        <li><a href="#" onclick="filterProducts('k18')" class="hover:text-white transition">K18 Collection</a></li>
+                        <li><a href="#" onclick="filterProducts('olaplex')" class="hover:text-white transition">Olaplex Collection</a></li>
+                        <li><a href="#" onclick="filterProducts('stmnt')" class="hover:text-white transition">STMNT Collection</a></li>
+                    </ul>
+                    <p class="text-brand-400 text-xs mt-4">Questions? Ask at your appointment!</p>
                 </div>
             </div>
-            <div class="border-t border-brand-800 mt-8 pt-8 text-center text-brand-400 text-sm">
+            <div class="border-t border-brand-700 mt-8 pt-8 text-center text-brand-400 text-sm">
                 &copy; 2026 A.Mack Hair Design. All rights reserved.
             </div>
         </div>
@@ -330,7 +401,7 @@
         function filterProducts(filter) {
             currentFilter = filter;
             renderProducts();
-            window.scrollTo({ top: 400, behavior: 'smooth' });
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         }
 
         function findProduct(id) {
@@ -444,9 +515,11 @@
                 return;
             }
             
-            // For prototype, just show an alert
+            // Build product list for message
+            const items = cart.map(item => `${item.quantity}x ${item.name}`).join('\n');
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Checkout prototype!\n\nTotal: $${total.toFixed(2)}\n\nIn the real site, this would go to a payment processor like Stripe.`);
+            
+            alert(`Product Request Summary:\n\n${items}\n\nTotal: $${total.toFixed(2)}\n\nMention these products at your next appointment and Alex will have them ready for you!`);
         }
 
         // Initialize

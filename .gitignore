@@ -1,0 +1,10 @@
+# Download scripts (not needed for production)
+*.py
+*.sh
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
